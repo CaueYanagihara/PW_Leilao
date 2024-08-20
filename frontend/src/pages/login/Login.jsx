@@ -15,7 +15,7 @@ const Login = () => {
 
     const login = () => {
         //DEVERA CHAMAR O BACKEND PARA VALIDAR OS DADOS DE LOGIN.
-        if(user.email == "caueyanagihara@gmail.com" && user.password == "1234"){
+        if(user.email === "caueyanagihara@gmail.com" && user.password === "1234"){
             let token = "token to backend";
             localStorage.setItem("token", token);
             localStorage.setItem("email", user.email);
@@ -26,21 +26,24 @@ const Login = () => {
     }
 
     return (
-        <div className="card">
+        <div className="card w-9 mx-auto my-8">
             <div className="flex flex-column md:flex-row">
                 <div className="w-full md:w-5 flex flex-column align-items-center justify-content-center gap-3 py-5">
                     <div className="flex flex-wrap justify-content-center align-items-center gap-2">
                         <label className="w-6rem">Email</label>
-                        <InputText id="email" type="text" className="w-12rem" />
+                        <InputText onChange={handleChange} name="email" id="email" type="text" placeholder="Digite seu Email" className="w-12rem" />
                     </div>
                     <div className="flex flex-wrap justify-content-center align-items-center gap-2">
                         <label className="w-6rem">Senha</label>
-                        <InputText id="password" type="password" className="w-12rem" />
+                        <InputText onChange={handleChange} name="password" id="password" type="password" placeholder="Digite sua senha" className="w-12rem" />
                     </div>
-                    <Button label="Login" icon="pi pi-user" className="w-10rem mx-auto"></Button>
+                    <Button onClick={login} label="Login" icon="pi pi-user" className="w-10rem mx-auto"></Button>
                 </div>
                 <div className="w-full md:w-2">
                     <Divider layout="vertical" className="hidden md:flex">
+                        <b>OR</b>
+                    </Divider>
+                    <Divider layout="horizontal" className="flex md:hidden" align="center">
                         <b>OR</b>
                     </Divider>
                 </div>
