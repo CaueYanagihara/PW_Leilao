@@ -1,5 +1,5 @@
 import React from "react";
-import "./Home.css";
+import style from "./Home.module.css";
 import Logout from '../../components/logout/Logout.jsx';
 import { useTranslation }from "react-i18next";
 
@@ -12,8 +12,8 @@ const Home = () => {
 
     return(
         <div>
-            <h1>{t('welcome')} Pagina Inicial</h1>
-            <button onClick={() => changeLanguage('en')}>English</button>
+            <h1 className={`w-full ${style.textColor}`} >{t('welcome')} Pagina Inicial</h1>
+            <button className={`${style['background-color']}`} onClick={() => changeLanguage('en')}>English</button>
             <button onClick={() => changeLanguage('pt')}>Português</button>
             <Logout/>
         </div>
