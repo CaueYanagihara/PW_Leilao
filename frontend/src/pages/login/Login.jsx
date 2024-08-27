@@ -4,8 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { Divider } from 'primereact/divider';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+    const {t} = useTranslation();
+
     const [user, setUser] = useState({email:"", senha:""});
     const navigate = useNavigate();
 
@@ -37,7 +40,7 @@ const Login = () => {
                         <label className="w-6rem">Senha</label>
                         <InputText onChange={handleChange} name="password" id="password" type="password" placeholder="Digite sua senha" className="w-12rem" />
                     </div>
-                    <Button onClick={login} label="Login" icon="pi pi-user" className="w-10rem mx-auto"></Button>
+                    <Button onClick={login} label={t('button.login')} icon="pi pi-user" className="w-10rem mx-auto"></Button>
                 </div>
                 <div className="w-full md:w-2">
                     <Divider layout="vertical" className="hidden md:flex">
