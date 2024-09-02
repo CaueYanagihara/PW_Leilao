@@ -1,9 +1,11 @@
 {
     "welcome":"Bem vindo",
+    "Home":"Início",
     "password":"Senha",
     "email":"E-mail",
+    "or":"ou",
     "button":{
         "login": "Entrar",
-        "register": "Cadastrar-se"
+        "sign-up": "Cadastrar-se"
     }
 }

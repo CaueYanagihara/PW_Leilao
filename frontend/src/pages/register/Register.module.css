@@ -1,14 +1,17 @@
 :root {
-    --register-color: rgb(15, 120, 146);
-    --register-container-color: rgba(203, 231, 199, 1);
-    --back-button-out-color: rgba(90, 135, 83, 1);
+    --register-color: rgb(34, 34, 34);
+    --register-container-color: rgb(255, 255, 255);
+    --back-button-out-color: rgb(25, 25, 25);
     --back-button-over-color: rgba(46, 46, 46, 1);
     --register-button-color: rgba(46, 46, 46, 1);
 }
 
 .register {
     background-color: var(--register-color);
-    /* background-image: url(../../images/register/register_background.png); */
+    background-image: url(/public/images/background_img.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
         
 }
 

@@ -1,7 +1,9 @@
 {
     "welcome":"Welcome",
+    "Home": "Home",
     "password":"Password",
     "email":"E-mail",
+    "or": "or",
     "button": {
         "login": "Login",
         "register": "Register"
