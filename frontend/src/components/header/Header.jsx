@@ -1,11 +1,14 @@
 import React from "react";
 import "./Header.css";
 import { TabMenu } from 'primereact/tabmenu';
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
+    const { t } = useTranslation();
+    
     const items = [
-        { label: 'Home', icon: 'pi pi-home', url: '/' },
-        { label: 'Contatos', icon: 'pi pi-address-book', url: '/' }
+        { label: t('home'), icon: 'pi pi-home', url: '/' },
+        { label: t('contacts'), icon: 'pi pi-address-book', url: '/contacts' }
     ];
 
     return (

@@ -135,28 +135,37 @@ const Register = () => {
 
     return (
         <div className={`
-            register
+            ${registerStyle.register}
             flex
             min-h-screen
             align-items-center
-            justify-content-center
-            ${registerStyle.register}`}>
+            justify-content-center`}>
+                
             <Card title="Registro" className={`
-                register-container
+                ${registerStyle['register-container']}
                 flex
                 align-items-center
                 justify-content-center
-                text-center
-                ${registerStyle['register-container']}`}>
-                <p className="sub-title font-bold">Informe seus dados:</p>
+                text-center`}>
+
+                <p className={`
+                    ${registerStyle['sub-title']} 
+                    font-bold`}>
+                    Informe seus dados:
+                </p>
+
                 <div className="
                     flex
                     flex-column
                     justify-content-center">
-                    <div className="register-item">
+
+                    <div className={`
+                        ${registerStyle['register-item']}`}>
+
                         <FloatLabel className="
                             w-full
                             mb-5">
+
                             <InputText
                                 value={name}
                                 id="name"
@@ -168,13 +177,19 @@ const Register = () => {
                                 required
                                 className={`
                                     w-full ${fieldErrors.name ? "p-invalid" : ""}`} />
+
                             <label htmlFor="name">Nome</label>
+
                         </FloatLabel>
                     </div>
-                    <div className="register-item">
+
+                    <div className={`
+                        ${registerStyle['register-item']}`}>
+
                         <FloatLabel className="
                             w-full
                             mb-5">
+
                             <InputText
                                 value={email}
                                 id="email"
@@ -186,16 +201,22 @@ const Register = () => {
                                 keyfilter="email"
                                 required
                                 className={`
-                                    w-full ${fieldErrors.email ? "p-invalid" : ""}`} />
+                                    w-full 
+                                    ${fieldErrors.email ? "p-invalid" : ""}`} />
+
                             <label htmlFor="email">Email</label>
+
                         </FloatLabel>
                     </div>
-                    <div className="
-                        password-area
-                        register-item">
+
+                    <div className={`
+                        ${registerStyle['register-item']} 
+                        ${registerStyle['password-area']}`}>
+
                         <FloatLabel className="
                             w-full
                             mb-5">
+
                             <Password
                                 value={password}
                                 id="password"
@@ -217,23 +238,27 @@ const Register = () => {
                                 className={`
                                     w-full
                                     ${fieldErrors.password ? "p-invalid" : ""}`} />
+
                             <label htmlFor="password">Senha</label>
+
                         </FloatLabel>
                     </div>
-                    <div className="register-item">
-                        <FloatLabel className="
-                            password-area
+
+                    <div className={`
+                        ${registerStyle['register-item']}`}>
+
+                        <FloatLabel className={`
+                            ${registerStyle['password-area']}
                             w-full
-                            mb-5">
+                            mb-5`}>
+
                             <Password
                                 value={confirmPassword}
                                 id="confirmPassword"
                                 name="confirmPassword"
                                 onChange={handlePasswordConfirmation}
                                 onFocus={() => handleFieldFocus("Confirme a Senha")}
-                                onBlur={() =>
-                                    handleFieldBlur("Confirme a Senha", confirmPassword)
-                                }
+                                onBlur={() =>handleFieldBlur("Confirme a Senha", confirmPassword)}
                                 inputStyle={{ width: "100%" }}
                                 toggleMask
                                 feedback={false}
@@ -241,28 +266,36 @@ const Register = () => {
                                 className={`
                                     w-full
                                     ${fieldErrors.confirmPassword ? "p-invalid" : ""}`} />
+
                             <label htmlFor="confirmPassword">Confirme a Senha</label>
+
                         </FloatLabel>
                     </div>
-                    <div id="confirmPasswordError">
-                        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-                    </div>
-                    <div className="register-item">
+
+                    <div id="confirmPasswordError">{errorMessage && <p className="text-red-500">{errorMessage}</p>}</div>
+
+                    <div className={`
+                        ${registerStyle['register-item']}`}>
+
                         <Button
                             label="Criar Conta"
-                            id="register-button"
+                            id={`
+                                ${registerStyle['register-button']}`}
                             className={`
                                 w-18rem
                                 mb-4
-                                ${isFormValid ? "bg-green-600 border-green-600" : "bg-gray-500 border-gray-500"}
-                            `}
+                                ${isFormValid ? `${registerStyle['valid-button']}` : `${registerStyle['invalid-button']}`}`}
                             disabled={!isFormValid}
                         />
+
                     </div>
-                    <div className="register-item">
+
+                    <div className={`
+                        ${registerStyle['register-item']}`}>
+
                         <Button
                             label="Voltar"
-                            id="back-button"
+                            id={`${registerStyle['back-button']}`}
                             className="
                                 w-full
                                 mb-4"
@@ -271,6 +304,7 @@ const Register = () => {
                             onMouseOut={({ target }) => target.style.color = "var(--back-button-out-color)"}
                             onClick={handleGoBack}
                         />
+
                     </div>
                 </div>
             </Card>

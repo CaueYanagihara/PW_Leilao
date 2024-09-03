@@ -2,24 +2,38 @@
     --register-color: rgb(34, 34, 34);
     --register-container-color: rgb(255, 255, 255);
     --back-button-out-color: rgb(25, 25, 25);
-    --back-button-over-color: rgba(46, 46, 46, 1);
+    --back-button-over-color: rgb(99, 102, 241);
     --register-button-color: rgba(46, 46, 46, 1);
+
+    --background-valid-color: rgb(99, 102, 241);
+    --border-valid-color: rgb(99, 102, 241);
+    --background-invalid-color: rgb(100, 100, 100);
+    --border-invalid-color: rgba(130, 130, 130, 1);
+}
+
+.valid-button{
+    background-color: var(--background-valid-color);
+    border-color: var(--border-valid-color);
+}
+.invalid-button{
+    background-color: var(--background-invalid-color);
+    border-color: var(--border-invalid-color);
 }
 
 .register {
+    min-height: calc(100vh - 120px); /*Subtrai o tamanho do header e footer*/
     background-color: var(--register-color);
     background-image: url(/public/images/background_img.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-        
 }
 
 .register-container {
     background-color: var(--register-container-color);
 }
 
-.register-container>div>div { /*PAREI DE COLOCAR OS MODULOS AQUI*/
+.register-container>div>div { /*NAO COLOQUEI COMO MODULO AQUI*/
     /*p-card-content: tem padding padrao*/
     padding: 0;
 }

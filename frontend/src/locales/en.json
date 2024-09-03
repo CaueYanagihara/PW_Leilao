@@ -1,11 +1,13 @@
 {
     "welcome":"Welcome",
-    "Home": "Home",
+    "home": "Home",
+    "contacts": "Contacts",
     "password":"Password",
     "email":"E-mail",
     "or": "or",
     "button": {
         "login": "Login",
         "register": "Register"
-    }
+    },
+    "all-rights-reserved":"All rights reserved"
 }

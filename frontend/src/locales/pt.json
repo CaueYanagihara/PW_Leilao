@@ -1,11 +1,13 @@
 {
     "welcome":"Bem vindo",
-    "Home":"Início",
+    "home":"Início",
+    "contacts": "contatos",
     "password":"Senha",
     "email":"E-mail",
     "or":"ou",
     "button":{
         "login": "Entrar",
         "sign-up": "Cadastrar-se"
-    }
+    },
+    "all-rights-reserved": "Todos os direitos reservados"
 }
