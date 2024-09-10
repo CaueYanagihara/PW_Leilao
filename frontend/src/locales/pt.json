@@ -1,13 +1,35 @@
 {
-    "welcome":"Bem vindo",
-    "home":"Início",
-    "contacts": "contatos",
-    "password":"Senha",
-    "email":"E-mail",
-    "or":"ou",
-    "button":{
+    "email": "E-mail",
+    "enter-your-email": "Digite seu Email",
+    "password": "Senha",
+    "enter-your-password": "Digite sua Senha",
+    "or": "ou",
+    "button": {
         "login": "Entrar",
         "sign-up": "Cadastrar-se"
     },
+    "register": "Registro",
+    "required": "Obrigatório",
+    "name": "Nome",
+    "confirm-your-password": "Confirme sua Senha",
+    "create-account": "Criar Conta",
+    "go-back": "Voltar",
+    "register-page": {
+        "provide-your-information": "Informe seus dados",
+        "required-lower-Case": "Ao menos uma letra minúscula",
+        "required-upper-Case": "Ao menos uma letra maiúscula",
+        "required-number": "Ao menos um número",
+        "required-special-char": "Ao menos um caractere especial",
+        "required-length": "Mínimo de 6 caracteres",
+        "waiting": "Aguardando",
+        "too-simple": "Muito Simples",
+        "medium-password": "Senha Mediana",
+        "strong-password": "Senha Forte"
+    },
+    "welcome-to-home-page": "Bem vindo a Página Inicial",
+    "logout": "Desconectar-se",
+    "contacts": "Contatos",
+    "home": "Início",
+    "page": "Página",
     "all-rights-reserved": "Todos os direitos reservados"
 }

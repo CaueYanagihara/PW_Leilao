@@ -1,5 +1,5 @@
 .card-background {
-    min-height: calc(100vh - 120px); /*Subtrai o tamanho do header e footer*/
+    padding: 65px 0 65px 0;
     background-image: url(/public/images/background_img.jpg);
     background-size: cover;
     background-position: center;

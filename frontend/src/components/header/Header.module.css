@@ -1,0 +1,14 @@
+:root{
+    --background-color: rgb(255,255,255);
+    --button-text-color: rgb(107, 114, 128);
+}
+
+.grid-item{
+    background-color: var(--background-color);
+}
+
+.button{
+    font-weight: 800;
+    color: var(--button-text-color);
+    background-color: var(--background-color);
+}

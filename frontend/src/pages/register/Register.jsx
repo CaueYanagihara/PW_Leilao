@@ -7,9 +7,11 @@ import { Password } from "primereact/password";
 import { Divider } from "primereact/divider";
 import { Button } from "primereact/button";
 import registerStyle from "./Register.module.css";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
     const navigate = useNavigate();
+    const { t } = useTranslation();
 
     const handleGoBack = () => {
         navigate(-1);
@@ -49,46 +51,35 @@ const Register = () => {
         passwordCriteria,
     ]);
 
-    const header = <div className="font-bold mb-3">Informe a Senha</div>;
+    const header = <div
+        className="
+        font-bold 
+        mb-3">
+            {t('enter-your-password')}
+        </div>;
     const footer = (
         <>
             <Divider />
-            <p className="mt-2">Obrigatório:</p>
-            <ul className="pl-2 ml-2 mt-0 line-height-3">
-                <li
-                    className={
-                        passwordCriteria.hasLowerCase ? "text-green-500" : "text-red-500"
-                    }
-                >
-                    Ao menos uma letra minúscula
+            <p className="mt-2">{t('required')}:</p>
+            <ul className="
+            pl-2 
+            ml-2 
+            mt-0 
+            line-height-3">
+                <li className={passwordCriteria.hasLowerCase ? "text-green-500" : "text-red-500"}>
+                    {t('register-page.required-lower-Case')}
                 </li>
-                <li
-                    className={
-                        passwordCriteria.hasUpperCase ? "text-green-500" : "text-red-500"
-                    }
-                >
-                    Ao menos uma letra maiúscula
+                <li className={passwordCriteria.hasUpperCase ? "text-green-500" : "text-red-500"}>
+                    {t('register-page.required-upper-Case')}
                 </li>
-                <li
-                    className={
-                        passwordCriteria.hasNumber ? "text-green-500" : "text-red-500"
-                    }
-                >
-                    Ao menos um número
+                <li className={passwordCriteria.hasNumber ? "text-green-500" : "text-red-500"}>
+                    {t('register-page.required-number')}
                 </li>
-                <li
-                    className={
-                        passwordCriteria.hasSpecialChar ? "text-green-500" : "text-red-500"
-                    }
-                >
-                    Ao menos um caractere especial
+                <li className={passwordCriteria.hasSpecialChar ? "text-green-500" : "text-red-500"}>
+                    {t('register-page.required-special-char')}
                 </li>
-                <li
-                    className={
-                        passwordCriteria.minLength ? "text-green-500" : "text-red-500"
-                    }
-                >
-                    Mínimo de 6 caracteres
+                <li className={passwordCriteria.minLength ? "text-green-500" : "text-red-500"}>
+                    {t('register-page.required-length')}
                 </li>
             </ul>
 
@@ -141,7 +132,7 @@ const Register = () => {
             align-items-center
             justify-content-center`}>
                 
-            <Card title="Registro" className={`
+            <Card title={t('register')} className={`
                 ${registerStyle['register-container']}
                 flex
                 align-items-center
@@ -151,7 +142,7 @@ const Register = () => {
                 <p className={`
                     ${registerStyle['sub-title']} 
                     font-bold`}>
-                    Informe seus dados:
+                    {t('register-page.provide-your-information')}:
                 </p>
 
                 <div className="
@@ -172,13 +163,13 @@ const Register = () => {
                                 name="name"
                                 autoComplete="name"
                                 onChange={(e) => setName(e.target.value)}
-                                onFocus={() => handleFieldFocus("Nome")}
-                                onBlur={() => handleFieldBlur("Nome", name)}
+                                onFocus={() => handleFieldFocus(t('name'))}
+                                onBlur={() => handleFieldBlur(t('name'), name)}
                                 required
                                 className={`
                                     w-full ${fieldErrors.name ? "p-invalid" : ""}`} />
 
-                            <label htmlFor="name">Nome</label>
+                            <label htmlFor="name">{t('name')}</label>
 
                         </FloatLabel>
                     </div>
@@ -196,15 +187,15 @@ const Register = () => {
                                 name="email"
                                 autoComplete="email"
                                 onChange={(e) => setEmail(e.target.value)}
-                                onFocus={() => handleFieldFocus("Email")}
-                                onBlur={() => handleFieldBlur("Email", email)}
+                                onFocus={() => handleFieldFocus(t('email'))}
+                                onBlur={() => handleFieldBlur(t('email'), email)}
                                 keyfilter="email"
                                 required
                                 className={`
                                     w-full 
                                     ${fieldErrors.email ? "p-invalid" : ""}`} />
 
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email">{t('email')}</label>
 
                         </FloatLabel>
                     </div>
@@ -223,10 +214,10 @@ const Register = () => {
                                 name="password"
                                 onChange={handlePasswordChange}
                                 onFocus={() => {
-                                    handleFieldFocus("Senha");
+                                    handleFieldFocus(t('password'));
                                     setIsPasswordFocused(true);
                                 }}
-                                onBlur={() => handleFieldBlur("Senha", password)}
+                                onBlur={() => handleFieldBlur(t('password'), password)}
                                 inputStyle={{ width: "100%" }}
                                 toggleMask
                                 header={header}
@@ -235,11 +226,15 @@ const Register = () => {
                                     isPasswordFocused &&
                                     !Object.values(passwordCriteria).every(Boolean)
                                 }
+                                promptLabel={t('register-page.waiting')}
+                                weakLabel={t('register-page.too-simple')}
+                                mediumLabel={t('register-page.medium-password')}
+                                strongLabel={t('register-page.strong-password')}
                                 className={`
                                     w-full
                                     ${fieldErrors.password ? "p-invalid" : ""}`} />
 
-                            <label htmlFor="password">Senha</label>
+                            <label htmlFor="password">{t('password')}</label>
 
                         </FloatLabel>
                     </div>
@@ -267,7 +262,7 @@ const Register = () => {
                                     w-full
                                     ${fieldErrors.confirmPassword ? "p-invalid" : ""}`} />
 
-                            <label htmlFor="confirmPassword">Confirme a Senha</label>
+                            <label htmlFor="confirmPassword">{t('confirm-your-password')}</label>
 
                         </FloatLabel>
                     </div>
@@ -278,7 +273,7 @@ const Register = () => {
                         ${registerStyle['register-item']}`}>
 
                         <Button
-                            label="Criar Conta"
+                            label={t('create-account')}
                             id={`
                                 ${registerStyle['register-button']}`}
                             className={`
@@ -294,7 +289,7 @@ const Register = () => {
                         ${registerStyle['register-item']}`}>
 
                         <Button
-                            label="Voltar"
+                            label={t('go-back')}
                             id={`${registerStyle['back-button']}`}
                             className="
                                 w-full

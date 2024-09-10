@@ -4,17 +4,19 @@ import Logout from '../../components/logout/Logout.jsx';
 import { useTranslation }from "react-i18next";
 
 const Home = () => {
-    const {t, i18n} = useTranslation();
-
-    const changeLanguage = (language) => {
-        i18n.changeLanguage(language);
-    }
+    const {t} = useTranslation();
 
     return(
-        <div>
-            <h1 className={`w-full ${homeStyle.textColor}`} >{t('welcome')} Pagina Inicial</h1>
-            <button className={`${homeStyle['background-color']}`} onClick={() => changeLanguage('en')}>English</button>
-            <button onClick={() => changeLanguage('pt')}>Português</button>
+        <div className={`
+        ${homeStyle['home-background']}
+        w-full
+        h-screen`}>
+
+            <h1 className={`
+            ${homeStyle.textColor}
+            w-full`}>
+                {t('welcome-to-home-page')}
+            </h1>
             <Logout/>
         </div>
     );

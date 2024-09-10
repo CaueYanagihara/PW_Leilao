@@ -1,13 +1,35 @@
 {
-    "welcome":"Welcome",
-    "home": "Home",
-    "contacts": "Contacts",
-    "password":"Password",
-    "email":"E-mail",
+    "email": "E-mail",
+    "enter-your-email": "Enter your Email",
+    "password": "Password",
+    "enter-your-password": "Enter your Password",
     "or": "or",
     "button": {
         "login": "Login",
-        "register": "Register"
+        "sign-up": "Register"
     },
-    "all-rights-reserved":"All rights reserved"
+    "register": "Register",
+    "required": "Required",
+    "name": "Name",
+    "confirm-your-password": "Confirm your Password",
+    "create-account": "Create an account",
+    "go-back": "Go Back",
+    "register-page": {
+        "provide-your-information": "Provide your information",
+        "required-lower-Case": "At least one Lowercase letter",
+        "required-upper-Case": "At least one Uppercase letter",
+        "required-number": "At least one Number",
+        "required-special-char": "At least one Special Char",
+        "required-length": "At least six characters",
+        "waiting": "Waiting",
+        "too-simple": "Too Simple",
+        "medium-password": "Medium Strength Password",
+        "strong-password": "Strong Password"
+    },
+    "welcome-to-home-page":"Welcome to Home Page",
+    "logout": "Logout",
+    "contacts": "Contacts",
+    "home": "Home",
+    "page": "Page",
+    "all-rights-reserved": "All rights reserved"
 }
