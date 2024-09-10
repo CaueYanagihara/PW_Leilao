@@ -1,6 +1,6 @@
 import React from "react";
-import homeStyle from "./Home.module.css";
 import Logout from '../../components/logout/Logout.jsx';
+import homeStyle from "./Home.module.css";
 import { useTranslation }from "react-i18next";
 
 const Home = () => {

@@ -73,7 +73,7 @@ const Login = () => {
                         align-items-center 
                         gap-2">
                             <label className="w-6rem">{t('password')}</label>
-                            <InputText onChange={handleChange} name="password" id="password" type="password" placeholder={t('enter-your-email')} className="w-12rem" />
+                            <InputText onChange={handleChange} name="password" id="password" type="password" placeholder={t('enter-your-password')} className="w-12rem" />
                         </div>
                         <Button
                         label={t('button.login')}

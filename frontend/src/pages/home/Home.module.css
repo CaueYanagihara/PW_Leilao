@@ -1,7 +1,11 @@
+:root{
+    --text-color: rgb(0, 0, 0);
+}
+
 .home-background{
     padding: 65px 0 65px 0;
 }
 
 .textColor{
-    color: black;
+    color: var(--text-color);
 }
