@@ -107,9 +107,9 @@ const Login = () => {
                     align-items-center 
                     justify-content-center 
                     py-5">
-
                         <Button label={t('button.sign-up')} icon="pi pi-user-plus" severity="success" className="w-10rem" onClick={() => { navigate("/register"); }}></Button>
                     </div>
+                    
                 </div>
             </Card>
         </div>

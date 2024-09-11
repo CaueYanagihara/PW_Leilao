@@ -12,7 +12,8 @@ const Footer = () => {
             bottom-0 
             left-0
             z-5
-            w-full`}>
+            w-screen
+            m-0`}>
             <p className="mx-5">&copy; <span id="year"></span> MotoMart. {t('all-rights-reserved')}.</p>
         </div>
     );
