@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from '../../components/sidebar/Sidebar.jsx';
+import HomeSidebar from '../../components/sidebar/HomeSidebar.jsx';
 import Logout from '../../components/logout/Logout.jsx';
 import homeStyle from "./Home.module.css";
 import { useTranslation }from "react-i18next";

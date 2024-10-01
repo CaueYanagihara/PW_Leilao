@@ -281,6 +281,7 @@ const Register = () => {
                                 mb-4
                                 ${isFormValid ? `${registerStyle['valid-button']}` : `${registerStyle['invalid-button']}`}`}
                             disabled={!isFormValid}
+                            onClick={()=>{navigate("/login")}}
                         />
 
                     </div>

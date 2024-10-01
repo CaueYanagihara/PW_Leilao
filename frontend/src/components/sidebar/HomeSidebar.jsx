@@ -1,9 +1,20 @@
-import React from "react";
-import { Button } from 'primereact/button';
+import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Sidebar } from 'primereact/sidebar';
+import { Button } from 'primereact/button';
+import { Avatar } from 'primereact/avatar';
+import { Ripple } from 'primereact/ripple';
+import { StyleClass } from 'primereact/styleclass';
 
-const Sidebar = () => {
+
+const HomeSidebar = () => {
     const { t } = useTranslation();
+
+    const [visible, setVisible] = useState(false);
+    const btnRef1 = useRef(null);
+    const btnRef2 = useRef(null);
+    const btnRef3 = useRef(null);
+    const btnRef4 = useRef(null);
 
     return (
         <Sidebar
@@ -185,4 +196,4 @@ const Sidebar = () => {
     );
 }
 
-export default Sidebar;
+export default HomeSidebar;
