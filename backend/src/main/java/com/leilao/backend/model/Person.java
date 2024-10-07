@@ -27,14 +27,19 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @NotBlank(message = "Preenchimento obrigátorio")
     private String name;
+
     @Email(message = "Email Inválido")
     private String email;
+
     @JsonIgnore
     private String password;
+
     @JsonIgnore
     @Column(name = "validation_code")
+    
     private String validationCode;
     private LocalDateTime validationCodeValidity;
 
