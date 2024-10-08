@@ -28,10 +28,10 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Preenchimento obrigátorio")
+    @NotBlank(message = "{name.required}")
     private String name;
 
-    @Email(message = "Email Inválido")
+    @Email(message = "{email.invalid}")
     private String email;
 
     @JsonIgnore
@@ -39,7 +39,7 @@ public class Person {
 
     @JsonIgnore
     @Column(name = "validation_code")
-    
+
     private String validationCode;
     private LocalDateTime validationCodeValidity;
 
