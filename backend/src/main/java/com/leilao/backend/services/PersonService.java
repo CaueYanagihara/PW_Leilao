@@ -1,4 +1,4 @@
-package com.leilao.backend.service;
+package com.leilao.backend.services;
 
 import java.util.Date;
 import java.util.NoSuchElementException;
@@ -42,7 +42,8 @@ public class PersonService implements UserDetailsService {
             personDatabase.setValidationCodeValidity(new Date());
             personRepository.save(personDatabase);
 
-            // enviar o email com o código semelhante ao que foi feito no cadastro - método create abaixo
+            // enviar o email com o código semelhante ao que foi feito no cadastro - método
+            // create abaixo
         }
 
         return "mensagem";

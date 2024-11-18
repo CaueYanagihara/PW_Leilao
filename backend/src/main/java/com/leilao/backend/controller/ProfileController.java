@@ -13,40 +13,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leilao.backend.model.Profile;
-import com.leilao.backend.service.ProfileService;
+import com.leilao.backend.services.ProfileService;
 
 @RestController
 @RequestMapping("api/profile")
 public class ProfileController {
-    
+
     @Autowired
     private ProfileService profileService;
 
     @PostMapping
-    public Profile create(@RequestBody Profile profile){
+    public Profile create(@RequestBody Profile profile) {
         return profileService.create(profile);
     }
 
     @GetMapping("/{id}")
-    public Profile read(@PathVariable("id") Long id){
+    public Profile read(@PathVariable("id") Long id) {
         return profileService.read(id);
     }
 
     @PutMapping
-    public Profile update(@RequestBody Profile profile){
+    public Profile update(@RequestBody Profile profile) {
         return profileService.update(profile);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") Long id){
+    public void delete(@PathVariable("id") Long id) {
         profileService.delete(id);
     }
 
     @GetMapping
-    public List<Profile> list(){
+    public List<Profile> list() {
         return profileService.list();
     }
-    
 
-    
 }

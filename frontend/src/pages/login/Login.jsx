@@ -6,6 +6,7 @@ import { Button } from 'primereact/button';
 import { Card } from "primereact/card";
 import loginStyle from "./Login.module.css";
 import { useTranslation } from "react-i18next";
+import PersonService from "../../services/PersonService";
 
 const Login = () => {
     const {t} = useTranslation();
@@ -13,18 +14,22 @@ const Login = () => {
     const [user, setUser] = useState({email:"", senha:""});
     const navigate = useNavigate();
 
+    const personService = new PersonService();
+
     const handleChange = (input) =>{
         setUser({...user, [input.target.name]:input.target.value});
     }
 
-    const login = () => {
+    const login = async () => {
         //DEVERA CHAMAR O BACKEND PARA VALIDAR OS DADOS DE LOGIN.
-        if(user.email === "caueyanagihara@gmail.com" && user.password === "1234"){
-            let token = "token to backend";
+        try{
+            const response = await personService.login(user);
+            let token = response.token;
             localStorage.setItem("token", token);
             localStorage.setItem("email", user.email);
             navigate("/");
-        } else{
+        } catch (err){
+            console.log(err);
             alert("Usuário ou senha incorretos!");
         }        
     }

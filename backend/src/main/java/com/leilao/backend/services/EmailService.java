@@ -1,4 +1,4 @@
-package com.leilao.backend.service;
+package com.leilao.backend.services;
 
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,6 @@ import org.thymeleaf.context.Context;
 
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
-
 
 @Service
 public class EmailService {
@@ -38,11 +37,13 @@ public class EmailService {
     }
 
     /**
-     * Envia um email usando um template com o destinatário, assunto, variáveis de email e nome do arquivo de template fornecidos.
+     * Envia um email usando um template com o destinatário, assunto, variáveis de
+     * email e nome do arquivo de template fornecidos.
      *
      * @param to               o endereço de email do destinatário
      * @param subject          o assunto do email
-     * @param emailVariables   as variáveis de email a serem usadas no template - org.thymeleaf.context.Context
+     * @param emailVariables   as variáveis de email a serem usadas no template -
+     *                         org.thymeleaf.context.Context
      * @param templateFileName o nome do arquivo html de template
      * @throws MessagingException se ocorrer um erro ao enviar o email
      */

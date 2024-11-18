@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -15,12 +16,13 @@ import com.leilao.backend.model.Person;
 import com.leilao.backend.model.PersonAuthRequestDTO;
 import com.leilao.backend.model.PersonAuthResponseDTO;
 import com.leilao.backend.security.JwtService;
-import com.leilao.backend.service.PersonService;
+import com.leilao.backend.services.PersonService;
 
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/person")
+@CrossOrigin
 public class PersonController {
 
     @Autowired
