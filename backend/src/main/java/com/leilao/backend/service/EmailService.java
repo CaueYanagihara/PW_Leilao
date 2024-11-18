@@ -1,4 +1,4 @@
-package com.leilao.backend.services;
+package com.leilao.backend.service;
 
 import org.springframework.stereotype.Service;
 

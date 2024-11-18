@@ -1,4 +1,4 @@
-package com.leilao.backend.services;
+package com.leilao.backend.service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
