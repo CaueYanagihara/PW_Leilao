@@ -37,8 +37,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Entity
 @Data
 @Table(name = "person")
-@JsonIgnoreProperties({"authorities"})
-public class Person implements UserDetails{
+@JsonIgnoreProperties({ "authorities" })
+public class Person implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,14 +48,14 @@ public class Person implements UserDetails{
     private String name;
 
     @Email(message = "{email.invalid}")
-    @UniqueElements(message = "{email.unique}")
+    @Column(unique = true)
     private String email;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @JsonIgnore
-    @Column(name = "validation_code")
+    @Column(name = "validation_code", unique = true)
     private Integer validationCode;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -74,6 +74,7 @@ public class Person implements UserDetails{
 
     @Transient
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     public void setPassword(String password) {
         this.password = passwordEncoder.encode(password);
     }
@@ -81,12 +82,12 @@ public class Person implements UserDetails{
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return personProfile.stream()
-            .map(userRole -> new SimpleGrantedAuthority(userRole.getProfile().getName()))
-            .collect(Collectors.toList());
+                .map(userRole -> new SimpleGrantedAuthority(userRole.getProfile().getName()))
+                .collect(Collectors.toList());
     }
-    
+
     @Override
     public String getUsername() {
-       return email;
+        return email;
     }
 }

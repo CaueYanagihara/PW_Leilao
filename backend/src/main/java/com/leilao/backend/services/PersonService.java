@@ -14,8 +14,10 @@ import org.thymeleaf.context.Context;
 import com.leilao.backend.model.Person;
 import com.leilao.backend.model.PersonAuthRequestDTO;
 import com.leilao.backend.repository.PersonRepository;
+import com.leilao.backend.resources.template.emailWelcome;
 
 import jakarta.mail.MessagingException;
+import jakarta.validation.ConstraintViolationException;
 
 @Service
 public class PersonService implements UserDetailsService {
@@ -50,6 +52,10 @@ public class PersonService implements UserDetailsService {
     }
 
     public Person create(Person person) {
+        if (personRepository.findByEmail(person.getEmail()).isPresent()) {
+            throw new ConstraintViolationException("Email já está em uso", null);
+        }
+
         // person.setPassword(passwordEncoder.encode(person.getPassword()));
         Person personSaved = personRepository.save(person);
 

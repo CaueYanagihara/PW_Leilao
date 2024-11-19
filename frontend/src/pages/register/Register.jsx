@@ -8,6 +8,7 @@ import { Divider } from "primereact/divider";
 import { Button } from "primereact/button";
 import registerStyle from "./Register.module.css";
 import { useTranslation } from "react-i18next";
+import PersonService from "../../services/PersonService";
 
 const Register = () => {
     const navigate = useNavigate();
@@ -32,6 +33,8 @@ const Register = () => {
     const [isFormValid, setIsFormValid] = useState(false);
     const [fieldErrors, setFieldErrors] = useState({});
     const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+
+    const personService = new PersonService();
 
     useEffect(() => {
         const isPasswordValid = Object.values(passwordCriteria).every(Boolean);
@@ -105,6 +108,20 @@ const Register = () => {
             setErrorMessage("As senhas devem ser iguais.");
         } else {
             setErrorMessage("");
+        }
+    };
+
+    const handleSubmit = async () => {
+        try {
+            await personService.register({
+                name,
+                email,
+                password
+            });
+            navigate("/login");
+        } catch (err) {
+            console.log(err);
+            alert("Erro ao registrar usuário!");
         }
     };
 
@@ -281,7 +298,7 @@ const Register = () => {
                                 mb-4
                                 ${isFormValid ? `${registerStyle['valid-button']}` : `${registerStyle['invalid-button']}`}`}
                             disabled={!isFormValid}
-                            onClick={()=>{navigate("/login")}}
+                            onClick={() => { handleSubmit()}}
                         />
 
                     </div>
