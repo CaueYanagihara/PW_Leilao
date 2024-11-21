@@ -14,7 +14,6 @@ import org.thymeleaf.context.Context;
 import com.leilao.backend.model.Person;
 import com.leilao.backend.model.PersonAuthRequestDTO;
 import com.leilao.backend.repository.PersonRepository;
-import com.leilao.backend.resources.template.emailWelcome;
 
 import jakarta.mail.MessagingException;
 import jakarta.validation.ConstraintViolationException;
