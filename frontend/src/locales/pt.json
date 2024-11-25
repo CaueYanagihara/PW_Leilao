@@ -5,10 +5,11 @@
     "enter-your-password": "Digite sua Senha",
     "or": "ou",
     "button": {
-        "login": "Entrar",
-        "sign-up": "Cadastrar-se",
-        "reset-password": "Redefinir Senha"
+        "login": "Acessar",
+        "sign-up": "Cadastrar-se"
     },
+    "password-reset": "Redefinir Senha",
+    "password-reset-email": "Código de validação enviado para o email.",
     "register": "Registro",
     "required": "Obrigatório",
     "name": "Nome",

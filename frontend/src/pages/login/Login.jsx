@@ -68,7 +68,11 @@ const Login = () => {
                         justify-content-center 
                         align-items-center 
                         gap-2">
-                            <label className="w-6rem">{t('email')}</label>
+                            <label className="
+                            w-6rem
+                            text-center">
+                                {t('email')}
+                            </label>
                             <InputText onChange={handleChange} name="email" id="email" type="text" placeholder={t('enter-your-email')} className="w-12rem" />
                         </div>
                         <div className="
@@ -77,7 +81,11 @@ const Login = () => {
                         justify-content-center 
                         align-items-center 
                         gap-2">
-                            <label className="w-6rem">{t('password')}</label>
+                            <label className="
+                            w-6rem
+                            text-center">
+                                {t('password')}
+                            </label>
                             <InputText onChange={handleChange} name="password" id="password" type="password" placeholder={t('enter-your-password')} className="w-12rem" />
                         </div>
                         <Button
@@ -106,35 +114,30 @@ const Login = () => {
 
                     </div>
                     <div className="
-                    w-full 
-                    md:w-5 
-                    flex 
-                    align-items-center 
-                    justify-content-center 
-                    py-5">
-                        <Button 
-                            label={t('button.sign-up')} 
-                            icon="pi pi-user-plus" 
-                            severity="success" 
-                            className="w-10rem" 
-                            onClick={() => {navigate("/register");}}>
-                        </Button>
-                    </div>
-                    <div className="
-                    w-full 
-                    md:w-5 
-                    flex 
-                    align-items-center 
-                    justify-content-center 
-                    py-5">
-                        <Button 
-                            label={t('button.reset-password')} 
-                            icon="pi pi-user-plus" 
-                            severity="success" 
-                            className="w-10rem" 
-                            onClick={() => {navigate("/reset-password");}}>
-                        </Button>
-                    </div>
+                        w-full 
+                        md:w-5 
+flex 
+flex-column
+align-items-center 
+justify-content-center 
+py-5 
+gap-2">
+    <Button 
+        label={t('button.sign-up')} 
+        icon="pi pi-user-plus" 
+        severity="success" 
+        className="w-10rem my-2" 
+        onClick={() => {navigate("/register");}}>
+    </Button>
+    <a 
+        href="#" 
+        onClick={() => {navigate('/password-reset');}} 
+        className="
+            text-primary 
+            my-2">
+        {t('password-reset')}
+    </a>
+</div>
                 </div>
             </Card>
         </div>

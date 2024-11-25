@@ -5,6 +5,17 @@
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .card{
     max-width: 900px;
+}
+
+.card >div {
+    padding: 0;
+}
+
+@media (min-width: 950px) {
+    .card >div {
+        padding: 20px;
+    }
 }
