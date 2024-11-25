@@ -112,9 +112,29 @@ const Login = () => {
                     align-items-center 
                     justify-content-center 
                     py-5">
-                        <Button label={t('button.sign-up')} icon="pi pi-user-plus" severity="success" className="w-10rem" onClick={() => { navigate("/register"); }}></Button>
+                        <Button 
+                            label={t('button.sign-up')} 
+                            icon="pi pi-user-plus" 
+                            severity="success" 
+                            className="w-10rem" 
+                            onClick={() => {navigate("/register");}}>
+                        </Button>
                     </div>
-                    
+                    <div className="
+                    w-full 
+                    md:w-5 
+                    flex 
+                    align-items-center 
+                    justify-content-center 
+                    py-5">
+                        <Button 
+                            label={t('button.reset-password')} 
+                            icon="pi pi-user-plus" 
+                            severity="success" 
+                            className="w-10rem" 
+                            onClick={() => {navigate("/reset-password");}}>
+                        </Button>
+                    </div>
                 </div>
             </Card>
         </div>

@@ -6,8 +6,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import com.leilao.backend.model.PersonAuthRequestDTO;
-import com.leilao.backend.model.PersonAuthResponseDTO;
+import com.leilao.backend.model.dto.PersonAuthRequestDTO;
+import com.leilao.backend.model.dto.PersonAuthResponseDTO;
 import com.leilao.backend.security.JwtService;
 
 @RestController

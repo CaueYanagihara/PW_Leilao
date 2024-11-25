@@ -6,7 +6,8 @@
     "or": "or",
     "button": {
         "login": "Login",
-        "sign-up": "Register"
+        "sign-up": "Register",
+        "reset-password": "Reset Password"
     },
     "register": "Register",
     "required": "Required",

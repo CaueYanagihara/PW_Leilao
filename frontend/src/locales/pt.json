@@ -6,7 +6,8 @@
     "or": "ou",
     "button": {
         "login": "Entrar",
-        "sign-up": "Cadastrar-se"
+        "sign-up": "Cadastrar-se",
+        "reset-password": "Redefinir Senha"
     },
     "register": "Registro",
     "required": "Obrigatório",
