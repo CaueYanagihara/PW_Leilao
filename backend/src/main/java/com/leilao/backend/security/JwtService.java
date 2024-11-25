@@ -1,5 +1,6 @@
 package com.leilao.backend.security;
 
+
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -28,9 +29,9 @@ public class JwtService {
          key = Keys.hmacShaKeyFor(secretKey.getBytes());
     }
 
-    public String generateToken(String username) {
+    public String generateToken(String personAuthRequestDTO) {
         return Jwts.builder()
-                .setSubject(username)
+                .setSubject(personAuthRequestDTO)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(key, SignatureAlgorithm.HS256)

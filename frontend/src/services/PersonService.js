@@ -6,12 +6,12 @@ class PersonService extends BaseService{
     }
 
     async login(credentials){
-        const response = this.api.post(`${this.endPoint}/login`, credentials);
+        const response = await this.api.post(`${this.endPoint}/login`, credentials);
         return response.data;
     }
 
     async register(user) {
-        const response = this.api.post(`${this.endPoint}`, user);
+        const response = await this.api.post(`${this.endPoint}`, user);
         return response.data;
     }
 
