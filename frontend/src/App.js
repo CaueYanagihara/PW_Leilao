@@ -4,6 +4,7 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import PasswordReset from './pages/login/PasswordReset';
 import Register from './pages/register/Register';
+import Category from './pages/category/Category';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import PrivateRouter from './components/PrivateRouter';
@@ -17,8 +18,9 @@ function App() {
           <Route path='/login' Component={Login}></Route>
           <Route path='/register' Component={Register}></Route>
           <Route path="/password-reset" Component={PasswordReset} />
-          <Route element={<PrivateRouter/>}>
+          <Route element={<PrivateRouter />}>
             <Route path='/' Component={Home}></Route>
+            <Route path='/category' Component={Category}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

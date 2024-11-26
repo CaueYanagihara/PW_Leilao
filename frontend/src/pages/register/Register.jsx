@@ -8,15 +8,13 @@ import { Divider } from "primereact/divider";
 import { Button } from "primereact/button";
 import registerStyle from "./Register.module.css";
 import { useTranslation } from "react-i18next";
-import PersonService from "../../services/PersonService";
+import PersonService from "../../service/PersonService";
 
 const Register = () => {
     const navigate = useNavigate();
     const { t } = useTranslation();
 
-    const handleGoBack = () => {
-        navigate(-1);
-    };
+    const [loading, setLoading] = useState(false);
 
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -89,6 +87,10 @@ const Register = () => {
         </>
     );
 
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+
     const handlePasswordChange = (e) => {
         const newPassword = e.target.value;
         setPassword(newPassword);
@@ -113,16 +115,19 @@ const Register = () => {
 
     const handleSubmit = async () => {
         try {
+            setLoading(true);
             await personService.register({
                 name,
                 email,
                 password
             });
             navigate("/login");
+            alert("Usuário registrado!");
         } catch (err) {
             console.log(err);
             alert("Erro ao registrar usuário!");
         }
+        setLoading(false);
     };
 
     const handleFieldFocus = (field) => {
@@ -139,6 +144,14 @@ const Register = () => {
                 [field]: true,
             }));
         }
+    };
+
+    const load = () => {
+        setLoading(true);
+
+        setTimeout(() => {
+            
+        }, 20000);
     };
 
     return (
@@ -298,7 +311,8 @@ const Register = () => {
                                 mb-4
                                 ${isFormValid ? `${registerStyle['valid-button']}` : `${registerStyle['invalid-button']}`}`}
                             disabled={!isFormValid}
-                            onClick={() => { handleSubmit()}}
+                            loading={loading}
+                            onClick={() => {handleSubmit();}}
                         />
 
                     </div>
@@ -317,7 +331,6 @@ const Register = () => {
                             onMouseOut={({ target }) => target.style.color = "var(--back-button-out-color)"}
                             onClick={handleGoBack}
                         />
-
                     </div>
                 </div>
             </Card>

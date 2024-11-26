@@ -6,19 +6,15 @@ import { Button } from 'primereact/button';
 import { Card } from "primereact/card";
 import loginStyle from "./Login.module.css";
 import { useTranslation } from "react-i18next";
-import PersonService from "../../services/PersonService";
+import PersonService from "../../service/PersonService";
 
 const Login = () => {
-    const {t} = useTranslation();
-
-    const [user, setUser] = useState({email:"", senha:""});
+    const { t } = useTranslation();
     const navigate = useNavigate();
 
-    const personService = new PersonService();
+    const [user, setUser] = useState({email:"", senha:""});
 
-    const handleChange = (input) =>{
-        setUser({...user, [input.target.name]:input.target.value});
-    }
+    const personService = new PersonService();
 
     const login = async () => {
         //DEVERA CHAMAR O BACKEND PARA VALIDAR OS DADOS DE LOGIN.
@@ -32,6 +28,10 @@ const Login = () => {
             console.log(err);
             alert("Usuário ou senha incorretos!");
         }        
+    }
+
+    const handleChange = (input) => {
+        setUser({ ...user, [input.target.name]: input.target.value });
     }
 
     return (
@@ -116,28 +116,28 @@ const Login = () => {
                     <div className="
                         w-full 
                         md:w-5 
-flex 
-flex-column
-align-items-center 
-justify-content-center 
-py-5 
-gap-2">
-    <Button 
-        label={t('button.sign-up')} 
-        icon="pi pi-user-plus" 
-        severity="success" 
-        className="w-10rem my-2" 
-        onClick={() => {navigate("/register");}}>
-    </Button>
-    <a 
-        href="#" 
-        onClick={() => {navigate('/password-reset');}} 
-        className="
-            text-primary 
-            my-2">
-        {t('password-reset')}
-    </a>
-</div>
+                        flex 
+                        flex-column
+                        align-items-center 
+                        justify-content-center 
+                        py-5 
+                        gap-2">
+                        <Button
+                            label={t('button.sign-up')}
+                            icon="pi pi-user-plus"
+                            severity="success"
+                            className="w-10rem my-2"
+                            onClick={() => {navigate("/register");}}>
+                        </Button>
+                        <a
+                            href="#"
+                            onClick={() => {navigate('/password-reset');}}
+                            className="
+                                text-primary 
+                                my-2">
+                            {t('password-reset')}
+                        </a>
+                    </div>
                 </div>
             </Card>
         </div>

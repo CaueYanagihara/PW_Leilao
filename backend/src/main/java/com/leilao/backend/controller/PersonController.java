@@ -21,7 +21,7 @@ import com.leilao.backend.model.dto.PasswordResetValidateDTO;
 import com.leilao.backend.model.dto.PersonAuthRequestDTO;
 import com.leilao.backend.model.dto.PersonAuthResponseDTO;
 import com.leilao.backend.security.JwtService;
-import com.leilao.backend.services.PersonService;
+import com.leilao.backend.service.PersonService;
 
 import jakarta.persistence.Transient;
 import jakarta.validation.Valid;

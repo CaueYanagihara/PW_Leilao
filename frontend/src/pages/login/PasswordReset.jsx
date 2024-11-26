@@ -4,7 +4,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { useTranslation } from 'react-i18next';
-import PersonService from '../../services/PersonService';
+import PersonService from '../../service/PersonService';
 import passwordResetStyle from './PasswordReset.module.css';
 import loginStyle from "./Login.module.css";
 

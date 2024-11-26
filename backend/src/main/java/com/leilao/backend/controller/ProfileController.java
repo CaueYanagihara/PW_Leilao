@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.leilao.backend.model.Profile;
-import com.leilao.backend.services.ProfileService;
+import com.leilao.backend.service.ProfileService;
 
 @RestController
 @RequestMapping("api/profile")
