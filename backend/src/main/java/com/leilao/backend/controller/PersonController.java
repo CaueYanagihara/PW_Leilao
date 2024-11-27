@@ -1,11 +1,13 @@
 package com.leilao.backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,6 +26,7 @@ import com.leilao.backend.security.JwtService;
 import com.leilao.backend.service.PersonService;
 
 import jakarta.persistence.Transient;
+import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 
 @RestController
@@ -72,12 +75,24 @@ public class PersonController {
     }
 
     @PostMapping
-    public Person create(@Valid @RequestBody Person person) {
-        return personService.create(person);
+    public ResponseEntity<?> create(@Valid @RequestBody Person person) {
+        try {
+            Person createdPerson = personService.create(person);
+            return ResponseEntity.ok(createdPerson);
+        } catch (ConstraintViolationException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao registrar usuário!");
+        }
     }
 
     @PutMapping
     public Person update(@Valid @RequestBody Person person) {
         return personService.create(person);
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ResponseEntity<String> handleConstraintViolationException(ConstraintViolationException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }

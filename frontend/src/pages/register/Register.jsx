@@ -123,9 +123,13 @@ const Register = () => {
             });
             navigate("/login");
             alert("Usuário registrado!");
-        } catch (err) {
-            console.log(err);
-            alert("Erro ao registrar usuário!");
+        } catch (error) {
+            console.log(error);
+            if (error.response && error.response.data) {
+                setErrorMessage(error.response.data);
+            } else {
+                setErrorMessage('Erro ao registrar usuário!');
+            }
         }
         setLoading(false);
     };

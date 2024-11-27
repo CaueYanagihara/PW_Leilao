@@ -35,14 +35,14 @@ const PasswordReset = () => {
             <Card className={`
                 ${passwordResetStyle.card}
                 p-5`}>
-                <h2 className={`text-center`}>{t('password-reset')}</h2>
+                <h2 className={`text-center m-0`}>{t('password-reset')}</h2>
                 <form 
                     className={`
                         flex
                         flex-column
                         justify-content-center`}
                     onSubmit={handlePasswordResetRequest}>
-                    <div className={`mb-3`}>
+                    <div className={`my-3`}>
                         <label htmlFor="email">{t('email')}</label>
                         <InputText
                             id="email"
