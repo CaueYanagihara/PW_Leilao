@@ -33,5 +33,14 @@
     "contacts": "Contacts",
     "home": "Home",
     "page": "Page",
-    "all-rights-reserved": "All rights reserved"
+    "auction1-title": "Auction 1 Title",
+    "auction1-description": "Auction 1 Description",
+    "auction2-title": "Auction 2 Title",
+    "auction2-description": "Auction 2 Description",
+    "auction3-title": "Auction 3 Title",
+    "auction3-description": "Auction 3 Description",
+    "all-rights-reserved": "All rights reserved",
+    "welcome": "Welcome",
+    "home-description": "Home Page Description",
+    "explore-now": "Explore Now"
 }

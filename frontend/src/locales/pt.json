@@ -33,5 +33,14 @@
     "contacts": "Contatos",
     "home": "Início",
     "page": "Página",
-    "all-rights-reserved": "Todos os direitos reservados"
+    "all-rights-reserved": "Todos os direitos reservados",
+    "auction1-title": "Título do Leilão 1",
+    "auction1-description": "Descrição do Leilão 1",
+    "auction2-title": "Título do Leilão 2",
+    "auction2-description": "Descrição do Leilão 2",
+    "auction3-title": "Título do Leilão 3",
+    "auction3-description": "Descrição do Leilão 3",
+    "welcome": "Bem-vindo",
+    "home-description": "Descrição da Página Inicial",
+    "explore-now": "Explore Agora"
 }
