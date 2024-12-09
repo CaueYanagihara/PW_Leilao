@@ -7,8 +7,11 @@ import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import CategoryService from "../../service/CategoryService";
+import { useTranslation } from "react-i18next";
+import categoryStyle from "./Category.module.css";
 
 const Category = () => {
+    const { t } = useTranslation();
     const [categories, setCategories] = useState([]);
     const [category, setCategory] = useState({ name: "", observation: "" });
     const [dialogVisible, setDialogVisible] = useState(false);
@@ -30,8 +33,8 @@ const Category = () => {
         } catch (error) {
             toast.current.show({
                 severity: "error",
-                summary: "Erro",
-                detail: "Erro ao buscar as categorias!",
+                summary: t("error"),
+                detail: t("error-fetching-categories"),
             });
         } finally {
             setLoading(false);
@@ -52,17 +55,17 @@ const Category = () => {
         try {
             if (isEdit) {
                 await categoryService.update(category);
-                toast.current.show({ severity: "success", summary: "Atualizado", detail: "Categoria atualizada com sucesso!" });
+                toast.current.show({ severity: "success", summary: t("updated"), detail: t("category-updated-successfully") });
             } else {
                 await categoryService.insert(category);
-                toast.current.show({ severity: "success", summary: "Criado", detail: "Categoria criada com sucesso!" });
+                toast.current.show({ severity: "success", summary: t("created"), detail: t("category-created-successfully") });
             }
             loadCategories();
         } catch (error) {
             toast.current.show({
                 severity: "error",
-                summary: "Erro",
-                detail: "Erro ao salvar categori",
+                summary: t("error"),
+                detail: t("error-saving-category"),
             });
         } finally {
             hideDialog();
@@ -77,8 +80,8 @@ const Category = () => {
 
     const confirmDeleteCategory = (category) => {
         confirmDialog({
-            message: `Remover a categoria "${category.name}"?`,
-            header: "Confirmaçõa",
+            message: `${t("remove-category")} "${category.name}"?`,
+            header: t("confirmation"),
             icon: "pi pi-exclamation-triangle",
             accept: () => deleteCategory(category),
         });
@@ -87,13 +90,13 @@ const Category = () => {
     const deleteCategory = async (category) => {
         try {
             await categoryService.delete(category.id);
-            toast.current.show({ severity: "warn", summary: "Removido", detail: "Categoria removida com sucesso" });
+            toast.current.show({ severity: "warn", summary: t("removed"), detail: t("category-removed-successfully") });
             loadCategories();
         } catch (error) {
             toast.current.show({
                 severity: "error",
-                summary: "Erro",
-                detail: "Erro ao remover a categoria",
+                summary: t("error"),
+                detail: t("error-removing-category"),
             });
         }
     };
@@ -117,38 +120,35 @@ const Category = () => {
 
     const dialogFooter = (
         <div>
-            <Button label="Cancelar" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
-            <Button label="Salvar" icon="pi pi-check" className="p-button-text" onClick={saveCategory} />
+            <Button label={t("cancel")} icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
+            <Button label={t("save")} icon="pi pi-check" className="p-button-text" onClick={saveCategory} />
         </div>
     );
 
     return (
         <div className="p-grid p-justify-center">
             <Toast ref={toast} />
-            <ConfirmDialog acceptLabel="Sim" rejectLabel="Não"/>
+            <ConfirmDialog acceptLabel={t("yes")} rejectLabel={t("no")}/>
           
-                <Button label="Nova Categoria" icon="pi pi-plus" className="p-button-success" onClick={openNew} />
-           
             <DataTable
                 value={categories}
                 loading={loading}
-         
             >
-                <Column field="name" header="Nome"></Column>
-                <Column field="observation" header="Observação"></Column>
-                <Column body={actionBodyTemplate} header="Ações"></Column>
+                <Column field="name" header={t("name")}></Column>
+                <Column field="observation" header={t("observation")}></Column>
+                <Column body={actionBodyTemplate} header={t("actions")}></Column>
             </DataTable>
 
             <Dialog
                 visible={dialogVisible}
                 style={{ width: "30vw" }}
-                header={isEdit ? "Editar Categoria" : "Nova Categoria"}
+                header={isEdit ? t("edit-category") : t("new-category")}
                 modal
                 footer={dialogFooter}
                 onHide={hideDialog}
             >
                 <div className="field">
-                    <label htmlFor="name">Nome</label>
+                    <label htmlFor="name">{t("name")}</label>
                     <InputText
                         id="name"
                         value={category.name}
@@ -157,7 +157,7 @@ const Category = () => {
                     />
                 </div>
                 <div className="field">
-                    <label htmlFor="observation">Observação</label>
+                    <label htmlFor="observation">{t("observation")}</label>
                     <InputText
                         id="observation"
                         value={category.observation}
@@ -165,6 +165,12 @@ const Category = () => {
                     />
                 </div>
             </Dialog>
+
+            <Button 
+                icon="pi pi-plus" 
+                className={`p-button-rounded p-button-success ${categoryStyle.floatingButton}`} 
+                onClick={openNew} 
+            />
         </div>
     );
 };

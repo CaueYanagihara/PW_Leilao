@@ -29,7 +29,7 @@
         "strong-password": "Senha Forte"
     },
     "welcome-to-home-page": "Bem vindo a Página Inicial",
-    "logout": "Desconectar-se",
+    "logout": "Desconectar",
     "contacts": "Contatos",
     "home": "Início",
     "page": "Página",
@@ -42,5 +42,6 @@
     "auction3-description": "Descrição do Leilão 3",
     "welcome": "Bem-vindo",
     "home-description": "Descrição da Página Inicial",
-    "explore-now": "Explore Agora"
+    "explore-now": "Explore Agora",
+    "categories": "Categorias"
 }
