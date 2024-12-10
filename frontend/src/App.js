@@ -9,6 +9,7 @@ import Category from './pages/category/Category';
 import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import PrivateRouter from './components/PrivateRouter';
+import "primeicons/primeicons.css";
 
 const App = () => {
   return (

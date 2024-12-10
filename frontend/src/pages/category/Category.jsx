@@ -6,8 +6,8 @@ import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
-import CategoryService from "../../service/CategoryService";
 import { useTranslation } from "react-i18next";
+import CategoryService from "../../service/CategoryService";
 import categoryStyle from "./Category.module.css";
 
 const Category = () => {
@@ -106,12 +106,14 @@ const Category = () => {
             <>
                 <Button
                     icon="pi pi-pencil"
-                    className="p-button-rounded p-button-success mr-2"
+                    className="p-button-rounded mr-2"
+                    severity="warning"
                     onClick={() => editCategory(rowData)}
                 />
                 <Button
                     icon="pi pi-trash"
-                    className="p-button-rounded p-button-danger"
+                    className="p-button-rounded"
+                    severity="danger"
                     onClick={() => confirmDeleteCategory(rowData)}
                 />
             </>
@@ -126,7 +128,11 @@ const Category = () => {
     );
 
     return (
-        <div className="p-grid p-justify-center">
+        <div className={`
+            ${categoryStyle['category-background']}
+            p-grid 
+            p-justify-center
+            h-screen`}>
             <Toast ref={toast} />
             <ConfirmDialog acceptLabel={t("yes")} rejectLabel={t("no")}/>
           
@@ -168,7 +174,8 @@ const Category = () => {
 
             <Button 
                 icon="pi pi-plus" 
-                className={`p-button-rounded p-button-success ${categoryStyle.floatingButton}`} 
+                className={`${categoryStyle.floatingButton} p-button-rounded`}
+                severity="success"
                 onClick={openNew} 
             />
         </div>
