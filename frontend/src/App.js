@@ -10,6 +10,7 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 import PrivateRouter from './components/PrivateRouter';
 import "primeicons/primeicons.css";
+import MyAuctions from './pages/myAuctions/MyAuctions';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route element={<PrivateRouter />}>
             <Route path='/' Component={Home}></Route>
             <Route path='/category' Component={Category}></Route>
+            <Route path='/my-auctions' Component={MyAuctions}></Route>
           </Route>
         </Routes>
       </Router>

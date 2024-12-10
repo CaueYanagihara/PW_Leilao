@@ -22,8 +22,8 @@ const Home = () => {
             justify-content-center
             h-screen
             `}>
-            <h1 className={`text-center m-0`}>{t('welcome')}</h1>
-            <p className={`text-center`}>{t('home-description')}</p>
+            <h1 className={`text-center m-0 text-50`}>{t('welcome')}</h1>
+            <p className={`text-center text-50`}>{t('home-description')}</p>
             <div className={`flex flex-wrap justify-content-center`}>
                 {cardData.map((card, index) => (
                     <Card key={index} className={`

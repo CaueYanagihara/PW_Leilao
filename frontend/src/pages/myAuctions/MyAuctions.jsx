@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
@@ -7,34 +8,34 @@ import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import { useTranslation } from "react-i18next";
-import CategoryService from "../../service/CategoryService";
-import categoryStyle from "./Category.module.css";
+import AuctionService from "../../service/AuctionService";
+import myAuctionsStyle from "./MyAuctions.module.css";
 
-const Category = () => {
+const MyAuctions = () => {
     const { t } = useTranslation();
-    const [categories, setCategories] = useState([]);
-    const [category, setCategory] = useState({ name: "", observation: "" });
+    const [auctions, setAuctions] = useState([]);
+    const [auction, setAuction] = useState({ title: "", description: "" });
     const [dialogVisible, setDialogVisible] = useState(false);
     const [isEdit, setIsEdit] = useState(false);
     const [loading, setLoading] = useState(true);
     const toast = useRef(null);
 
-    const categoryService = new CategoryService();
+    const auctionService = new AuctionService();
 
     useEffect(() => {
-        loadCategories();
+        loadAuctions();
     }, []);
 
-    const loadCategories = async () => {
+    const loadAuctions = async () => {
         setLoading(true);
         try {
-            const data = await categoryService.list();
-            setCategories(data);
+            const data = await auctionService.list();
+            setAuctions(data);
         } catch (error) {
             toast.current.show({
                 severity: "error",
                 summary: t("error"),
-                detail: t("error-fetching-categories"),
+                detail: t("error-fetching-auctions"),
             });
         } finally {
             setLoading(false);
@@ -42,7 +43,7 @@ const Category = () => {
     };
 
     const openNew = () => {
-        setCategory({ name: "", observation: "" });
+        setAuction({ title: "", description: "" });
         setDialogVisible(true);
         setIsEdit(false);
     };
@@ -51,52 +52,52 @@ const Category = () => {
         setDialogVisible(false);
     };
 
-    const saveCategory = async () => {
+    const saveAuction = async () => {
         try {
             if (isEdit) {
-                await categoryService.update(category);
-                toast.current.show({ severity: "success", summary: t("updated"), detail: t("category-updated-successfully") });
+                await auctionService.update(auction);
+                toast.current.show({ severity: "success", summary: t("updated"), detail: t("auction-updated-successfully") });
             } else {
-                await categoryService.insert(category);
-                toast.current.show({ severity: "success", summary: t("created"), detail: t("category-created-successfully") });
+                await auctionService.insert(auction);
+                toast.current.show({ severity: "success", summary: t("created"), detail: t("auction-created-successfully") });
             }
-            loadCategories();
+            loadAuctions();
         } catch (error) {
             toast.current.show({
                 severity: "error",
                 summary: t("error"),
-                detail: t("error-saving-category"),
+                detail: t("error-saving-auction"),
             });
         } finally {
             hideDialog();
         }
     };
 
-    const editCategory = (category) => {
-        setCategory({ ...category });
+    const editAuction = (auction) => {
+        setAuction({ ...auction });
         setDialogVisible(true);
         setIsEdit(true);
     };
 
-    const confirmDeleteCategory = (category) => {
+    const confirmDeleteAuction = (auction) => {
         confirmDialog({
-            message: `${t("remove-category")} "${category.name}"?`,
+            message: `${t("remove-auction")} "${auction.title}"?`,
             header: t("confirmation"),
             icon: "pi pi-exclamation-triangle",
-            accept: () => deleteCategory(category),
+            accept: () => deleteAuction(auction),
         });
     };
 
-    const deleteCategory = async (category) => {
+    const deleteAuction = async (auction) => {
         try {
-            await categoryService.delete(category.id);
-            toast.current.show({ severity: "warn", summary: t("removed"), detail: t("category-removed-successfully") });
-            loadCategories();
+            await auctionService.delete(auction.id);
+            toast.current.show({ severity: "warn", summary: t("removed"), detail: t("auction-removed-successfully") });
+            loadAuctions();
         } catch (error) {
             toast.current.show({
                 severity: "error",
                 summary: t("error"),
-                detail: t("error-removing-category"),
+                detail: t("error-removing-auction"),
             });
         }
     };
@@ -108,13 +109,13 @@ const Category = () => {
                     icon="pi pi-pencil"
                     className="p-button-rounded mr-2"
                     severity="warning"
-                    onClick={() => editCategory(rowData)}
+                    onClick={() => editAuction(rowData)}
                 />
                 <Button
                     icon="pi pi-trash"
                     className="p-button-rounded"
                     severity="danger"
-                    onClick={() => confirmDeleteCategory(rowData)}
+                    onClick={() => confirmDeleteAuction(rowData)}
                 />
             </>
         );
@@ -123,13 +124,13 @@ const Category = () => {
     const dialogFooter = (
         <div>
             <Button label={t("cancel")} icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
-            <Button label={t("save")} icon="pi pi-check" className="p-button-text" onClick={saveCategory} />
+            <Button label={t("save")} icon="pi pi-check" className="p-button-text" onClick={saveAuction} />
         </div>
     );
 
     return (
         <div className={`
-            ${categoryStyle['category-background']}
+            ${myAuctionsStyle['myAuctions-background']}
             p-grid 
             p-justify-center
             h-screen`}>
@@ -138,11 +139,11 @@ const Category = () => {
           
             <div style={{ margin: '0 50px' }}>
                 <DataTable
-                    value={categories}
+                    value={auctions}
                     loading={loading}
                 >
-                    <Column field="name" header={t("name")}></Column>
-                    <Column field="observation" header={t("observation")}></Column>
+                    <Column field="title" header={t("title")}></Column>
+                    <Column field="description" header={t("description")}></Column>
                     <Column body={actionBodyTemplate} header={t("actions")} style={{ width: '150px' }}></Column>
                 </DataTable>
             </div>
@@ -150,33 +151,33 @@ const Category = () => {
             <Dialog
                 visible={dialogVisible}
                 style={{ width: "30vw" }}
-                header={isEdit ? t("edit-category") : t("new-category")}
+                header={isEdit ? t("edit-auction") : t("new-auction")}
                 modal
                 footer={dialogFooter}
                 onHide={hideDialog}
             >
                 <div className="field">
-                    <label htmlFor="name">{t("name")}</label>
+                    <label htmlFor="title">{t("title")}</label>
                     <InputText
-                        id="name"
-                        value={category.name}
-                        onChange={(e) => setCategory({ ...category, name: e.target.value })}
+                        id="title"
+                        value={auction.title}
+                        onChange={(e) => setAuction({ ...auction, title: e.target.value })}
                         required
                     />
                 </div>
                 <div className="field">
-                    <label htmlFor="observation">{t("observation")}</label>
+                    <label htmlFor="description">{t("description")}</label>
                     <InputText
-                        id="observation"
-                        value={category.observation}
-                        onChange={(e) => setCategory({ ...category, observation: e.target.value })}
+                        id="description"
+                        value={auction.description}
+                        onChange={(e) => setAuction({ ...auction, description: e.target.value })}
                     />
                 </div>
             </Dialog>
 
             <Button 
                 icon="pi pi-plus" 
-                className={`${categoryStyle.floatingButton} p-button-rounded`}
+                className={`${myAuctionsStyle.floatingButton} p-button-rounded`}
                 severity="success"
                 onClick={openNew} 
             />
@@ -184,4 +185,4 @@ const Category = () => {
     );
 };
 
-export default Category;
+export default MyAuctions;

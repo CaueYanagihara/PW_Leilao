@@ -16,6 +16,7 @@ const Header = () => {
 
     if (isLoggedIn) {
         items.push({ label: t('categories'), icon: 'pi pi-list', command: () => navigate('/category') });
+        items.push({ label: t('my-auctions'), icon: 'pi pi-list', command: () => navigate('/my-auctions') });
     }
 
     const changeLanguage = (language) => {
