@@ -46,7 +46,6 @@ public class PersonController {
     @Transient
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-
     @PostMapping("/login")
     public PersonAuthResponseDTO authenticateUser(@RequestBody PersonAuthRequestDTO authRequest) {
         Authentication authentication = authenticationManager.authenticate(
@@ -58,8 +57,13 @@ public class PersonController {
 
     @PostMapping("/password-reset-request")
     public ResponseEntity<?> passwordResetRequest(@RequestBody PersonAuthRequestDTO personAuthRequestDTO) {
-        personService.passwordCodeRequest(personAuthRequestDTO);
-        return ResponseEntity.ok("Código de validação enviado para o email.");
+        try {
+            personService.passwordResetRequest(personAuthRequestDTO);
+            return ResponseEntity.ok("Código de validação enviado para o email.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao solicitar recuperação de senha.");
+        }
     }
 
     @PostMapping("/password-reset-validate")

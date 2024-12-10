@@ -17,7 +17,6 @@ const Login = () => {
     const personService = new PersonService();
 
     const login = async () => {
-        //DEVERA CHAMAR O BACKEND PARA VALIDAR OS DADOS DE LOGIN.
         try{
             const response = await personService.login(user);
             let token = response.token;
@@ -126,7 +125,7 @@ const Login = () => {
                             label={t('button.sign-up')}
                             icon="pi pi-user-plus"
                             severity="success"
-                            className="w-10rem my-2"
+                            className="w-12rem my-2"
                             onClick={() => {navigate("/register");}}>
                         </Button>
                         <a

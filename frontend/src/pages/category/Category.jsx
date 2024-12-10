@@ -155,22 +155,24 @@ const Category = () => {
                 footer={dialogFooter}
                 onHide={hideDialog}
             >
-                <div className="field">
-                    <label htmlFor="name">{t("name")}</label>
-                    <InputText
-                        id="name"
-                        value={category.name}
-                        onChange={(e) => setCategory({ ...category, name: e.target.value })}
-                        required
-                    />
-                </div>
-                <div className="field">
-                    <label htmlFor="observation">{t("observation")}</label>
-                    <InputText
-                        id="observation"
-                        value={category.observation}
-                        onChange={(e) => setCategory({ ...category, observation: e.target.value })}
-                    />
+                <div className="p-fluid">
+                    <div className="p-field">
+                        <label htmlFor="name">{t("name")}</label>
+                        <InputText
+                            id="name"
+                            value={category.name}
+                            onChange={(e) => setCategory({ ...category, name: e.target.value })}
+                            required
+                        />
+                    </div>
+                    <div className="p-field">
+                        <label htmlFor="observation">{t("observation")}</label>
+                        <InputText
+                            id="observation"
+                            value={category.observation}
+                            onChange={(e) => setCategory({ ...category, observation: e.target.value })}
+                        />
+                    </div>
                 </div>
             </Dialog>
 

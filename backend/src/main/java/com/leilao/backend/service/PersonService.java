@@ -38,10 +38,10 @@ public class PersonService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return personRepository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));	
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado"));
     }
 
-    public void passwordCodeRequest(PersonAuthRequestDTO personAuthRequestDTO) {
+    public void passwordResetRequest(PersonAuthRequestDTO personAuthRequestDTO) {
         Optional<Person> person = personRepository.findByEmail(personAuthRequestDTO.getEmail());
         if (person.isPresent()) {
             Person personDatabase = person.get();
@@ -57,10 +57,14 @@ public class PersonService implements UserDetailsService {
                         personDatabase.getEmail(),
                         "Código de Validação para Redefinição de Senha",
                         context,
-                        "passwordResetCode");
+                        "passwordResetCode.html"); // Corrigir o nome do template
+                System.out.println("Email enviado com sucesso para: " + personDatabase.getEmail());
             } catch (MessagingException e) {
                 e.printStackTrace();
+                System.err.println("Erro ao enviar email: " + e.getMessage());
             }
+        } else {
+            System.err.println("Usuário não encontrado para o email: " + personAuthRequestDTO.getEmail());
         }
     }
 
@@ -69,7 +73,7 @@ public class PersonService implements UserDetailsService {
         if (person.isPresent()) {
             Person personDatabase = person.get();
             if (personDatabase.getValidationCode().equals(passwordResetValidateDTO.getValidationCode()) &&
-                personDatabase.getValidationCodeValidity().after(new Date())) {
+                    personDatabase.getValidationCodeValidity().after(new Date())) {
                 // Código válido
             } else {
                 throw new IllegalArgumentException("Código de validação inválido ou expirado.");
@@ -105,7 +109,7 @@ public class PersonService implements UserDetailsService {
         try {
             emailService.sendTemplateEmail(
                     personSaved.getEmail(),
-                    "Cadastro Efetuado com Sucesso", 
+                    "Cadastro Efetuado com Sucesso",
                     context,
                     "emailWelcome");
         } catch (MessagingException e) {

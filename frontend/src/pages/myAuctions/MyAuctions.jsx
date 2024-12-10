@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
@@ -156,22 +155,24 @@ const MyAuctions = () => {
                 footer={dialogFooter}
                 onHide={hideDialog}
             >
-                <div className="field">
-                    <label htmlFor="title">{t("title")}</label>
-                    <InputText
-                        id="title"
-                        value={auction.title}
-                        onChange={(e) => setAuction({ ...auction, title: e.target.value })}
-                        required
-                    />
-                </div>
-                <div className="field">
-                    <label htmlFor="description">{t("description")}</label>
-                    <InputText
-                        id="description"
-                        value={auction.description}
-                        onChange={(e) => setAuction({ ...auction, description: e.target.value })}
-                    />
+                <div className="p-fluid">
+                    <div className="p-field">
+                        <label htmlFor="title">{t("title")}</label>
+                        <InputText
+                            id="title"
+                            value={auction.title}
+                            onChange={(e) => setAuction({ ...auction, title: e.target.value })}
+                            required
+                        />
+                    </div>
+                    <div className="p-field">
+                        <label htmlFor="description">{t("description")}</label>
+                        <InputText
+                            id="description"
+                            value={auction.description}
+                            onChange={(e) => setAuction({ ...auction, description: e.target.value })}
+                        />
+                    </div>
                 </div>
             </Dialog>
 
