@@ -28,6 +28,7 @@ import com.leilao.backend.service.PersonService;
 import jakarta.persistence.Transient;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
+import org.springframework.security.authentication.BadCredentialsException;
 
 @RestController
 @RequestMapping("/api/person")
@@ -47,12 +48,16 @@ public class PersonController {
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @PostMapping("/login")
-    public PersonAuthResponseDTO authenticateUser(@RequestBody PersonAuthRequestDTO authRequest) {
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        authRequest.getEmail(), authRequest.getPassword()));
-        return new PersonAuthResponseDTO(
-                authRequest.getEmail(), jwtService.generateToken(authentication.getName()));
+    public ResponseEntity<?> authenticateUser(@RequestBody PersonAuthRequestDTO authRequest) {
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            authRequest.getEmail(), authRequest.getPassword()));
+            return ResponseEntity.ok(new PersonAuthResponseDTO(
+                    authRequest.getEmail(), jwtService.generateToken(authentication.getName())));
+        } catch (BadCredentialsException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuário inexistente ou senha inválida");
+        }
     }
 
     @PostMapping("/password-reset-request")
@@ -74,8 +79,13 @@ public class PersonController {
 
     @PostMapping("/password-reset")
     public ResponseEntity<?> passwordReset(@RequestBody PasswordResetDTO passwordResetDTO) {
-        personService.resetPassword(passwordResetDTO);
-        return ResponseEntity.ok("Senha redefinida com sucesso.");
+        try {
+            personService.resetPassword(passwordResetDTO);
+            return ResponseEntity.ok("Senha redefinida com sucesso.");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao redefinir senha.");
+        }
     }
 
     @PostMapping

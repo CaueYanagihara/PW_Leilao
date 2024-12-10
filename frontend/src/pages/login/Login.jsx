@@ -12,21 +12,25 @@ const Login = () => {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
-    const [user, setUser] = useState({email:"", senha:""});
+    const [user, setUser] = useState({ email: "", password: "" });
 
     const personService = new PersonService();
 
     const login = async () => {
-        try{
+        try {
             const response = await personService.login(user);
             let token = response.token;
             localStorage.setItem("token", token);
             localStorage.setItem("email", user.email);
             navigate("/");
-        } catch (err){
-            console.log(err);
-            alert("Usuário ou senha incorretos!");
-        }        
+        } catch (err) {
+            console.error('Erro ao fazer login', err);
+            if (err.response?.status === 401) {
+                alert("Usuário inexistente ou senha inválida");
+            } else {
+                alert("Erro ao fazer login. Tente novamente mais tarde.");
+            }
+        }
     }
 
     const handleChange = (input) => {

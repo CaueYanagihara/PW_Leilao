@@ -24,6 +24,11 @@ class PersonService extends BaseService {
         const response = await this.api.post(`${this.endPoint}/password-reset-validate`, data);
         return response.data;
     }
+
+    async resetPassword(data) {
+        const response = await this.api.post(`${this.endPoint}/password-reset`, data);
+        return response.data;
+    }
 }
 
 export default PersonService;

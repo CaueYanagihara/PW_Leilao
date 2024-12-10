@@ -6,7 +6,7 @@ const Footer = () => {
     const { t } = useTranslation();
 
     return (
-        <div id="footer" class={`
+        <div id="footer" className={`
             ${footerStyle.footer}
             fixed
             bottom-0 

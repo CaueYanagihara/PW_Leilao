@@ -89,7 +89,7 @@ const PasswordReset = () => {
             navigate('/login');
         } catch (error) {
             console.error('Erro ao redefinir senha', error);
-            alert("Erro ao redefinir senha.");
+            setErrorMessage(error.response?.data || 'Erro ao redefinir senha.');
         }
         setLoading(false);
     };
