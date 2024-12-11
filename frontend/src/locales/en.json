@@ -81,5 +81,8 @@
     "auction-removed-successfully": "Auction removed successfully",
     "error-removing-auction": "Error removing auction",
     "edit-auction": "Edit auction",
-    "new-auction": "New auction"
+    "new-auction": "New auction",
+    "confirm-logout": "Are you sure you want to log out of your account?",
+    "logged-out": "Logged Out",
+    "logout-success": "You have been logged out successfully."
 }

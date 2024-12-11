@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import { TabMenu } from 'primereact/tabmenu';
 import headerStyle from "./Header.module.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import { Toast } from 'primereact/toast';
 
 const Header = () => {
     const { t, i18n } = useTranslation();
     const navigate = useNavigate();
     const isLoggedIn = !!localStorage.getItem("token");
+    const toast = useRef(null);
 
     const items = [
         { label: t('home'), icon: 'pi pi-home', url: '/' },
@@ -24,9 +27,19 @@ const Header = () => {
     }
 
     const handleLogout = () => {
-        localStorage.removeItem("token");
-        localStorage.removeItem("email");
-        navigate('/login');
+        confirmDialog({
+            message: t('confirm-logout'),
+            header: t('confirmation'),
+            icon: 'pi pi-exclamation-triangle',
+            acceptLabel: t('yes'),
+            rejectLabel: t('no'),
+            accept: () => {
+                localStorage.removeItem("token");
+                localStorage.removeItem("email");
+                navigate('/login');
+                toast.current.show({ severity: 'info', summary: t('logged-out'), detail: t('logout-success') });
+            }
+        });
     }
 
     return (
@@ -38,6 +51,8 @@ const Header = () => {
         z-5
         w-screen
         m-0`}>
+            <Toast ref={toast} />
+            <ConfirmDialog />
 
             <div className={`
             ${headerStyle['grid-item']} 

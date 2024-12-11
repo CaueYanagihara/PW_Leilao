@@ -81,5 +81,8 @@
     "auction-removed-successfully": "Leilão removido com sucesso",
     "error-removing-auction": "Erro ao remover leilão",
     "edit-auction": "Editar leilão",
-    "new-auction": "Novo leilão"
+    "new-auction": "Novo leilão",
+    "confirm-logout": "Tem certeza que quer desconectar da sua conta?",
+    "logged-out": "Desconectado",
+    "logout-success": "Você foi desconectado com sucesso."
 }
