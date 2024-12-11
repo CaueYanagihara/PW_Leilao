@@ -64,5 +64,22 @@
     "yes": "Sim",
     "no": "Não",
     "actions": "Ações",
-    "observation": "Observações"
+    "observation": "Observações",
+    "enter-validation-code": "Digite o código de validação",
+    "validation-code": "Código de validação",
+    "validate-code": "Validar código",
+    "new-password": "Nova senha",
+    "confirm-new-password": "Confirme a nova senha",
+    "reset-password": "Redefinir senha",
+    "password-reset-success": "Senha redefinida com sucesso.",
+    "title": "Título",
+    "description": "Descrição",
+    "auction-updated-successfully": "Leilão atualizado com sucesso",
+    "auction-created-successfully": "Leilão criado com sucesso",
+    "error-saving-auction": "Erro ao salvar leilão",
+    "remove-auction": "Remover leilão",
+    "auction-removed-successfully": "Leilão removido com sucesso",
+    "error-removing-auction": "Erro ao remover leilão",
+    "edit-auction": "Editar leilão",
+    "new-auction": "Novo leilão"
 }

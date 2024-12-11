@@ -64,5 +64,22 @@
     "yes": "Yes",
     "no": "No",
     "actions": "Actions",
-    "observation": "Observation"
+    "observation": "Observation",
+    "enter-validation-code": "Enter validation code",
+    "validation-code": "Validation code",
+    "validate-code": "Validate code",
+    "new-password": "New password",
+    "confirm-new-password": "Confirm new password",
+    "reset-password": "Reset password",
+    "password-reset-success": "Password reset successfully.",
+    "title": "Title",
+    "description": "Description",
+    "auction-updated-successfully": "Auction updated successfully",
+    "auction-created-successfully": "Auction created successfully",
+    "error-saving-auction": "Error saving auction",
+    "remove-auction": "Remove auction",
+    "auction-removed-successfully": "Auction removed successfully",
+    "error-removing-auction": "Error removing auction",
+    "edit-auction": "Edit auction",
+    "new-auction": "New auction"
 }
