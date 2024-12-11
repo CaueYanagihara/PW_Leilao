@@ -49,10 +49,13 @@ public class PersonController {
 
     @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody PersonAuthRequestDTO authRequest) {
+        
+        System.err.println("\n\n\n\n\n"+authRequest.getPassword());
         try {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
                             authRequest.getEmail(), authRequest.getPassword()));
+
             return ResponseEntity.ok(new PersonAuthResponseDTO(
                     authRequest.getEmail(), jwtService.generateToken(authentication.getName())));
         } catch (BadCredentialsException e) {

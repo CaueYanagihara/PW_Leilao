@@ -49,7 +49,6 @@ const PasswordReset = () => {
         setLoading(true);
         try {
             await personService.validatePasswordResetCode({ email, validationCode: code });
-            alert(t('code-validated'));
             setShowPasswordResetDialog(true);
             setShowCodeDialog(false);
         } catch (error) {

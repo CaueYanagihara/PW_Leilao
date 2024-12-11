@@ -87,7 +87,7 @@ public class PersonService implements UserDetailsService {
         Optional<Person> person = personRepository.findByEmail(passwordResetDTO.getEmail());
         if (person.isPresent()) {
             Person personDatabase = person.get();
-            personDatabase.setPassword(passwordEncoder.encode(passwordResetDTO.getNewPassword()));
+            personDatabase.setPassword(passwordResetDTO.getNewPassword());
             personDatabase.setValidationCode(null);
             personDatabase.setValidationCodeValidity(null);
             personRepository.save(personDatabase);
