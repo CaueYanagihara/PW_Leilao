@@ -1,4 +1,3 @@
-
 .floatingButton {
     position: fixed;
     bottom: 65px;
@@ -16,4 +15,5 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: black;
 }
