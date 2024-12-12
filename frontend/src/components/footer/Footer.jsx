@@ -4,6 +4,11 @@ import footerStyle from "./Footer.module.css";
 
 const Footer = () => {
     const { t } = useTranslation();
+    const isLoggedIn = !!localStorage.getItem("token");
+
+    if (isLoggedIn) {
+        return null;
+    }
 
     return (
         <div id="footer" className={`

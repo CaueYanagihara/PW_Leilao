@@ -53,7 +53,11 @@ const Home = () => {
                     </Card>
                 ))}
             </div>
-            <div className={`flex flex-wrap justify-content-center mt-5`}>
+            <div className={`
+                flex 
+                flex-wrap 
+                justify-content-center 
+                mt-5`}>
                 {myAuctions.map((auction, index) => (
                     <Card key={index} className={`
                         ${homeStyle.card}

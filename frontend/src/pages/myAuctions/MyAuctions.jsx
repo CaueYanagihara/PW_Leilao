@@ -129,32 +129,50 @@ const MyAuctions = () => {
 
     return (
         <div className={`
-            ${myAuctionsStyle['myAuctions-background']}
-            p-grid 
-            p-justify-center
-            h-screen`}>
-            <Toast ref={toast} />
-            <ConfirmDialog acceptLabel={t("yes")} rejectLabel={t("no")}/>
-          
-            <div style={{ margin: '0 50px' }}>
-                <DataTable
-                    value={auctions}
-                    loading={loading}
-                >
-                    <Column field="title" header={t("title")}></Column>
-                    <Column field="description" header={t("description")}></Column>
-                    <Column body={actionBodyTemplate} header={t("actions")} style={{ width: '150px' }}></Column>
-                </DataTable>
-            </div>
+            flex
+            align-items-center 
+            justify-content-center
+            w-full
+            min-h-screen`}>
+            <div className={`
+                ${myAuctionsStyle.background}
+                z-0
+                w-full
+                h-full
+                fixed
+                top-0
+                left-0`}>
 
-            <Dialog
-                visible={dialogVisible}
-                style={{ width: "30vw" }}
-                header={isEdit ? t("edit-auction") : t("new-auction")}
-                modal
-                footer={dialogFooter}
-                onHide={hideDialog}
-            >
+            </div>
+            <div className={`
+                ${myAuctionsStyle['myAuctions-background']}
+                z-1
+                p-grid 
+                p-justify-center
+                w-screen
+                h-screen`}>
+                <Toast ref={toast} />
+                <ConfirmDialog acceptLabel={t("yes")} rejectLabel={t("no")}/>
+            
+                <div className={`${myAuctionsStyle.list}`}>
+                    <DataTable
+                        value={auctions}
+                        loading={loading}
+                    >
+                        <Column field="title" header={t("title")}></Column>
+                        <Column field="description" header={t("description")}></Column>
+                        <Column body={actionBodyTemplate} header={t("actions")} style={{ width: '150px' }}></Column>
+                    </DataTable>
+                </div>
+
+                <Dialog
+                    visible={dialogVisible}
+                    style={{ width: "30vw" }}
+                    header={isEdit ? t("edit-auction") : t("new-auction")}
+                    modal
+                    footer={dialogFooter}
+                    onHide={hideDialog}
+                >
                 <div className="p-fluid">
                     <div className="p-field">
                         <label htmlFor="title">{t("title")}</label>
@@ -174,14 +192,21 @@ const MyAuctions = () => {
                         />
                     </div>
                 </div>
-            </Dialog>
+                </Dialog>
 
-            <Button 
-                icon="pi pi-plus" 
-                className={`${myAuctionsStyle.floatingButton} p-button-rounded`}
-                severity="success"
-                onClick={openNew} 
-            />
+                <Button 
+                    icon="pi pi-plus" 
+                    className={`
+                        ${myAuctionsStyle.floatingButton} 
+                        flex
+                        align-items-center 
+                        justify-content-center
+                        fixed
+                        p-button-rounded`}
+                    severity="success"
+                    onClick={openNew} 
+                />
+            </div>
         </div>
     );
 };
