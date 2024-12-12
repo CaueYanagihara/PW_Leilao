@@ -12,3 +12,34 @@
     color: var(--button-text-color);
     background-color: var(--background-color);
 }
+
+@media (max-width: 980px) {
+    .dropdown-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        position: fixed;
+        top: 80px; 
+        left: 0;
+        width: 100%;
+        max-width: 300px;
+        background-color: white;
+        z-index: 1000;
+        padding: 10px 0;
+    }
+
+    .header {
+        height: 80px; 
+    }
+
+    .dropdown-menu .p-menu {
+        width: 100%;
+    }
+
+    .dropdown-menu .p-menuitem {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+}

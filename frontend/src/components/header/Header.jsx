@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { TabMenu } from 'primereact/tabmenu';
+import { Menu } from 'primereact/menu';
 import headerStyle from "./Header.module.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -11,10 +12,11 @@ const Header = () => {
     const navigate = useNavigate();
     const isLoggedIn = !!localStorage.getItem("token");
     const toast = useRef(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const items = [
-        { label: t('home'), icon: 'pi pi-home', url: '/' },
-        { label: t('contacts'), icon: 'pi pi-address-book', url: '/contacts' }
+        { label: t('home'), icon: 'pi pi-home', command: () => navigate('/') },
+        { label: t('contacts'), icon: 'pi pi-address-book', command: () => navigate('/contacts') }
     ];
 
     if (isLoggedIn) {
@@ -42,6 +44,10 @@ const Header = () => {
         });
     }
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
         <>
             <Toast ref={toast} />
@@ -58,7 +64,10 @@ const Header = () => {
                 ${headerStyle['grid-item']} 
                 col-6
                 p-0`}>
-                    <TabMenu model={items} />
+                    <TabMenu model={items} className="hidden lg:flex" />
+                    <button onClick={toggleMenu} className="lg:hidden">
+                        <i className="pi pi-bars"></i>
+                    </button>
                 </div>
 
                 <div className={`
@@ -92,6 +101,11 @@ const Header = () => {
                     )}
                 </div>
             </div>
+            {isMenuOpen && (
+                <div className={`lg:hidden ${headerStyle['dropdown-menu']}`}>
+                    <Menu model={items} />
+                </div>
+            )}
         </>
     )
 }

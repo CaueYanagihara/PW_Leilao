@@ -34,6 +34,7 @@ const Home = () => {
         <>
             <Toast ref={toast} className="z-5" />
             <div className={`
+                ${homeStyle['home-container']}
                 flex
                 align-items-center 
                 justify-content-center
@@ -74,6 +75,13 @@ const Home = () => {
                             </Card>
                         ))}
                     </div>
+                    <h2 className={`
+                        text-center
+                        text-50 
+                        m-0
+                        mt-5`}>
+                        {t('my-auctions')}
+                    </h2>
                     <div className={`
                         flex 
                         flex-wrap 

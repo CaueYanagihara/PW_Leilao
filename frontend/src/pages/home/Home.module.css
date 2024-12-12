@@ -27,3 +27,8 @@
 .card > div {
     padding: 20px;
 }
+
+.home-container {
+    width: 100%;
+    overflow-x: hidden; /* Ensure content does not overflow horizontally */
+}
