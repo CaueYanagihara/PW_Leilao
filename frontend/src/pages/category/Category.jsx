@@ -129,59 +129,78 @@ const Category = () => {
 
     return (
         <div className={`
-            ${categoryStyle['category-background']}
-            p-grid 
-            p-justify-center
-            h-screen`}>
-            <Toast ref={toast} />
-            <ConfirmDialog acceptLabel={t("yes")} rejectLabel={t("no")}/>
-          
-            <div style={{ margin: '0 50px' }}>
-                <DataTable
-                    value={categories}
-                    loading={loading}
-                >
-                    <Column field="name" header={t("name")}></Column>
-                    <Column field="observation" header={t("observation")}></Column>
-                    <Column body={actionBodyTemplate} header={t("actions")} style={{ width: '150px' }}></Column>
-                </DataTable>
+            flex
+            align-items-center 
+            justify-content-center
+            w-full
+            min-h-screen`}>
+            <div className={`
+                ${categoryStyle.background}
+                z-0
+                w-full
+                h-full
+                fixed
+                top-0
+                left-0`}>
+
             </div>
-
-            <Dialog
-                visible={dialogVisible}
-                style={{ width: "30vw" }}
-                header={isEdit ? t("edit-category") : t("new-category")}
-                modal
-                footer={dialogFooter}
-                onHide={hideDialog}
-            >
-                <div className="p-fluid">
-                    <div className="p-field">
-                        <label htmlFor="name">{t("name")}</label>
-                        <InputText
-                            id="name"
-                            value={category.name}
-                            onChange={(e) => setCategory({ ...category, name: e.target.value })}
-                            required
-                        />
-                    </div>
-                    <div className="p-field">
-                        <label htmlFor="observation">{t("observation")}</label>
-                        <InputText
-                            id="observation"
-                            value={category.observation}
-                            onChange={(e) => setCategory({ ...category, observation: e.target.value })}
-                        />
-                    </div>
+            <div className={`
+                ${categoryStyle['category-background']}
+                z-1
+                p-grid 
+                p-justify-center
+                w-screen
+                h-screen`}>
+                <Toast ref={toast} />
+                <ConfirmDialog acceptLabel={t("yes")} rejectLabel={t("no")}/>
+            
+                <div className={`${categoryStyle.list}`}>
+                    <DataTable
+                        value={categories}
+                        loading={loading}
+                    >
+                        <Column field="name" header={t("name")}></Column>
+                        <Column field="observation" header={t("observation")}></Column>
+                        <Column body={actionBodyTemplate} header={t("actions")} style={{ width: '150px' }}></Column>
+                    </DataTable>
                 </div>
-            </Dialog>
 
-            <Button 
-                icon="pi pi-plus" 
-                className={`${categoryStyle.floatingButton} p-button-rounded`}
-                severity="success"
-                onClick={openNew} 
-            />
+                <Dialog
+                    visible={dialogVisible}
+                    style={{ width: "30vw" }}
+                    header={isEdit ? t("edit-category") : t("new-category")}
+                    modal
+                    footer={dialogFooter}
+                    onHide={hideDialog}
+                >
+                    <div className="p-fluid">
+                        <div className="p-field">
+                            <label htmlFor="name">{t("name")}</label>
+                            <InputText
+                                id="name"
+                                value={category.name}
+                                onChange={(e) => setCategory({ ...category, name: e.target.value })}
+                                required
+                            />
+                        </div>
+                        <div className="p-field">
+                            <label htmlFor="observation">{t("observation")}</label>
+                            <InputText
+                                id="observation"
+                                value={category.observation}
+                                onChange={(e) => setCategory({ ...category, observation: e.target.value })}
+                            />
+                        </div>
+                    </div>
+                </Dialog>
+
+                <Button 
+                    icon="pi pi-plus" 
+                    className={`${categoryStyle.floatingButton} p-button-rounded`}
+                    severity="success"
+                    onClick={openNew} 
+                />
+            </div>
         </div>
     );
 };

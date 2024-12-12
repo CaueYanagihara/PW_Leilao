@@ -30,46 +30,64 @@ const Home = () => {
 
     return (
         <div className={`
-            ${homeStyle['home-background']}
             flex
-            flex-column
-            align-items-center
+            align-items-center 
             justify-content-center
-            h-screen
-            `}>
-            <h1 className={`text-center m-0 text-50`}>{t('welcome')}</h1>
-            <p className={`text-center text-50`}>{t('home-description')}</p>
-            <div className={`flex flex-wrap justify-content-center`}>
-                {cardData.map((card, index) => (
-                    <Card key={index} className={`
-                        ${homeStyle.card}
-                        m-3`}>
-                        <h3>{card.title}</h3>
-                        <p>{card.description}</p>
-                        <Button 
-                            label={t('explore-now')}
-                            onClick={() => { /* Add navigation logic here */ }}
-                        />
-                    </Card>
-                ))}
+            w-full
+            min-h-screen`}>
+            <div className={`
+                ${homeStyle.background}
+                z-0
+                w-full
+                h-full
+                fixed
+                top-0
+                left-0`}>
+
             </div>
             <div className={`
-                flex 
-                flex-wrap 
-                justify-content-center 
-                mt-5`}>
-                {myAuctions.map((auction, index) => (
-                    <Card key={index} className={`
-                        ${homeStyle.card}
-                        m-3`}>
-                        <h3>{auction.title}</h3>
-                        <p>{auction.description}</p>
-                        <Button 
-                            label={t('explore-now')}
-                            onClick={() => { /* Add navigation logic here */ }}
-                        />
-                    </Card>
-                ))}
+                ${homeStyle['home-background']}
+                z-1
+                flex
+                flex-column
+                align-items-center
+                justify-content-center
+                h-screen
+                `}>
+                <h1 className={`text-center m-0 text-50`}>{t('welcome')}</h1>
+                <p className={`text-center text-50`}>{t('home-description')}</p>
+                <div className={`flex flex-wrap justify-content-center`}>
+                    {cardData.map((card, index) => (
+                        <Card key={index} className={`
+                            ${homeStyle.card}
+                            m-3`}>
+                            <h3>{card.title}</h3>
+                            <p>{card.description}</p>
+                            <Button 
+                                label={t('explore-now')}
+                                onClick={() => { /* Add navigation logic here */ }}
+                            />
+                        </Card>
+                    ))}
+                </div>
+                <div className={`
+                    flex 
+                    flex-wrap 
+                    justify-content-center 
+                    mt-5`}>
+                    {myAuctions.map((auction, index) => (
+                        <Card key={index} className={`
+                            ${homeStyle.card}
+                            m-3`}>
+                            <h3>{auction.title}</h3>
+                            <p>{auction.description}</p>
+                            <Button 
+                                label={t('explore-now')}
+                                onClick={() => { /* Add navigation logic here */ }}
+                            />
+                        </Card>
+                    ))}
+                </div>
             </div>
         </div>
     );
